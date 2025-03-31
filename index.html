@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨易骅的个人网站</title>
+    <link rel="stylesheet" href="personal-website-css.css">
+    <style>
+        /* 添加引入的通用背景样式 - 增强版 */
+        /* 共享的科技背景样式 - 可以应用于多个部分 */
+        .tech-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 科技风格背景容器 - 通用版本 */
+        .section-tech-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.7;
+            /* 从0.4提高到0.7，增强可见度 */
+        }
+
+        /* 现代网格背景 - 通用版本 */
+        .section-grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(30, 64, 124, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 64, 124, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.9;
+        }
+
+        /* 浮动几何图形 - 通用版本 */
+        .section-floating-shape {
+            position: absolute;
+            opacity: 0.7;
+            /* 从0.6提高到0.7 */
+            filter: blur(1px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        /* 不同的几何形状 - 给各个部分使用 */
+        .section-shape-1 {
+            width: 280px;
+            /* 从250px增加到280px */
+            height: 280px;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            background: linear-gradient(45deg, rgba(87, 6, 140, 0.15) 0%, rgba(30, 64, 124, 0.08) 100%);
+            /* 增强颜色 */
+            top: 15%;
+            right: -80px;
+            animation-delay: 0s;
+        }
+
+        .section-shape-2 {
+            width: 350px;
+            /* 从320px增加到350px */
+            height: 350px;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            background: linear-gradient(45deg, rgba(30, 64, 124, 0.12) 0%, rgba(87, 6, 140, 0.07) 100%);
+            /* 增强颜色 */
+            bottom: -120px;
+            left: -100px;
+            animation-delay: 5s;
+        }
+
+        .section-shape-3 {
+            width: 180px;
+            /* 从160px增加到180px */
+            height: 180px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(45deg, rgba(87, 6, 140, 0.1) 0%, rgba(30, 64, 124, 0.12) 100%);
+            /* 增强颜色 */
+            top: 30%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        /* 数字雨效果 - 垂直线条 */
+        .section-data-stream {
+            position: absolute;
+            width: 1.5px;
+            background: linear-gradient(to bottom, transparent, rgba(87, 6, 140, 0.35), transparent);
+            animation: dataFlow 8s linear infinite;
+            box-shadow: 0 0 4px rgba(87, 6, 140, 0.2);
+        }
+
+        .section-stream-1 {
+            height: 180px;
+            top: 0;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .section-stream-2 {
+            height: 240px;
+            top: 30%;
+            left: 85%;
+            animation-delay: 2s;
+        }
+
+        .section-stream-3 {
+            height: 150px;
+            top: 70%;
+            left: 40%;
+            animation-delay: 5s;
+        }
+
+        .section-stream-4 {
+            height: 200px;
+            top: 10%;
+            left: 65%;
+            animation-delay: 1s;
+        }
+
+        /* 技术节点 - 通用版本 */
+        .section-tech-node {
+            position: absolute;
+            width: 6px;
+            /* 从5px增加到6px */
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(30, 64, 124, 0.9);
+            /* 增强发光效果 */
+            animation: pulse 3s infinite;
+        }
+
+        .section-node-1 {
+            top: 25%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .section-node-2 {
+            top: 65%;
+            left: 35%;
+            animation-delay: 1s;
+        }
+
+        .section-node-3 {
+            top: 35%;
+            right: 20%;
+            animation-delay: 0.7s;
+        }
+
+        .section-node-4 {
+            bottom: 25%;
+            right: 12%;
+            animation-delay: 1.8s;
+        }
+
+        /* 连接线 - 通用版本 */
+        .section-connector {
+            position: absolute;
+            height: 1.5px;
+            /* 从1.2px增加到1.5px */
+            background: linear-gradient(90deg, transparent, rgba(30, 64, 124, 0.35), transparent);
+            /* 增强颜色 */
+            animation: fadeInOut 4.5s infinite alternate;
+            transform-origin: left center;
+            box-shadow: 0 0 3px rgba(30, 64, 124, 0.2);
+            /* 添加发光效果 */
+        }
+
+        .section-connector-1 {
+            width: 150px;
+            /* 从140px增加到150px */
+            top: 25%;
+            left: 17%;
+            transform: rotate(25deg);
+            animation-delay: 0.5s;
+        }
+
+        .section-connector-2 {
+            width: 200px;
+            /* 从180px增加到200px */
+            top: 35%;
+            right: 22%;
+            transform: rotate(-15deg);
+            animation-delay: 1.2s;
+        }
+
+        .section-connector-3 {
+            width: 180px;
+            /* 从160px增加到180px */
+            bottom: 25%;
+            right: 14%;
+            transform: rotate(10deg);
+            animation-delay: 0.3s;
+        }
+
+        /* 微妙的粒子效果 - 通用版本 */
+        .section-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 50% 50%, rgba(87, 6, 140, 0.05) 0%, transparent 20%),
+                /* 增强颜色并扩大范围 */
+                radial-gradient(circle at 80% 20%, rgba(30, 64, 124, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 20% 80%, rgba(87, 6, 140, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 70% 65%, rgba(30, 64, 124, 0.04) 0%, transparent 15%),
+                radial-gradient(circle at 25% 25%, rgba(87, 6, 140, 0.04) 0%, transparent 15%);
+            opacity: 0.85;
+        }
+
+        /* 定义脉冲动画 - 与首页保持一致 */
+        @keyframes sectionPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 15px rgba(30, 64, 124, 0.9);
+            }
+
+            50% {
+                transform: scale(3);
+                opacity: 0.6;
+                box-shadow: 0 0 25px rgba(87, 6, 140, 0.7);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 15px rgba(30, 64, 124, 0.9);
+            }
+        }
+
+        .section-tech-node {
+            animation: sectionPulse 3s infinite;
+        }
+
+        /* 调整实习经历、专业技能和联系方式部分的样式 */
+        .experience,
+        .skills,
+        .contact {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 确保这些部分中的内容在背景之上 */
+        .experience .container,
+        .skills .container,
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">杨易骅</a>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#education">教育经历</a></li>
+                    <li><a href="#experience">实习经历</a></li>
+                    <li><a href="#projects">项目经历</a></li>
+                    <li><a href="#skills">专业技能</a></li>
+                    <li><a href="#interests">游戏经历</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 个人介绍/首页 - 新的现代科技风背景 -->
+    <section id="home" class="hero">
+        <div class="tech-background">
+            <!-- 现代网格背景 -->
+            <div class="grid-overlay"></div>
+
+            <!-- 浮动几何形状 -->
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+
+            <!-- 数字雨效果 -->
+            <div class="data-stream stream-1"></div>
+            <div class="data-stream stream-2"></div>
+            <div class="data-stream stream-3"></div>
+            <div class="data-stream stream-4"></div>
+            <div class="data-stream stream-5"></div>
+
+            <!-- 技术节点 -->
+            <div class="tech-node node-1"></div>
+            <div class="tech-node node-2"></div>
+            <div class="tech-node node-3"></div>
+            <div class="tech-node node-4"></div>
+
+            <!-- 连接线 -->
+            <div class="connector connector-1"></div>
+            <div class="connector connector-2"></div>
+            <div class="connector connector-3"></div>
+
+            <!-- 微妙的粒子效果 -->
+            <div class="particles"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content-centered">
+                <div class="hero-greeting">你好，</div>
+                <h1 class="hero-title">我是<span class="highlight">杨易骅</span></h1>
+                <div class="hero-decoration"></div>
+                <p class="hero-description">
+                    我是一名计算机工程硕士研究生，专注于数据结构、机器学习和计算机系统架构。目前就读于纽约大学，同时拥有宾夕法尼亚州立大学计算机科学学士学位。擅长Python、Java等多种编程语言，有Web开发、机器学习模型训练与部署、数据分析等丰富项目经验。
+                </p>
+                <div class="hero-skills">
+                    <span class="skill-bubble">Python</span>
+                    <span class="skill-bubble">Java</span>
+                    <span class="skill-bubble">机器学习</span>
+                    <span class="skill-bubble">数据分析</span>
+                    <span class="skill-bubble">Web开发</span>
+                </div>
+                <a href="#contact" class="btn">联系我</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育经历 -->
+    <section id="education" class="education">
+        <!-- 添加这个背景容器 -->
+        <div class="education-bg-container">
+            <!-- 这里可以放置你的学校照片 -->
+            <div class="school-photo nyu-photo"></div>
+            <div class="school-photo psu-photo"></div>
+        </div>
+        <div class="container">
+            <div class="section-title">
+                <h2>教育经历</h2>
+                <p>我的学术背景与成就</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content nyu-theme">
+                        <div class="university-header">
+                            <div class="university-logo nyu-logo">
+                                <img src="images/school_logo/nyu_logo.png" alt="NYU Logo">
+                            </div>
+                            <div>
+                                <span class="timeline-date">2023年9月 - 2025年5月</span>
+                                <h3><strong>纽约大学</strong></h3>
+                            </div>
+                        </div>
+                        <p><strong>计算机工程 - 硕士</strong></p>
+                        <p><strong>GPA：</strong>3.63/4</p>
+                        <p><strong>荣誉奖项：</strong>获得"工程学院研究生奖学金"（7000美元/年）</p>
+                        <p><strong>主修课程：</strong></p>
+                        <div class="course-tags">
+                            <span class="course-tag">数据结构与算法</span>
+                            <span class="course-tag">网络架构与协议</span>
+                            <span class="course-tag">机器学习</span>
+                            <span class="course-tag">计算机系统架构</span>
+                            <span class="course-tag">数据中心与云计算</span>
+                            <span class="course-tag">实时嵌入式系统</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content psu-theme">
+                        <div class="university-header">
+                            <div class="university-logo psu-logo">
+                                <img src="images/school_logo/psu_logo.jpg" alt="PSU Logo">
+                            </div>
+                            <div>
+                                <span class="timeline-date">2018年8月 - 2022年12月</span>
+                                <h3><strong>宾夕法尼亚州立大学</strong></h3>
+                            </div>
+                        </div>
+                        <p><strong>计算机科学 - 本科（辅修 经济学）</strong></p>
+                        <p><strong>GPA：</strong>3.42/4</p>
+                        <p><strong>荣誉奖项：</strong>2020年春季、2020年秋季优秀学生名单（Dean's List）</p>
+                        <p><strong>主修课程：</strong></p>
+                        <div class="course-tags">
+                            <span class="course-tag">数据库管理系统</span>
+                            <span class="course-tag">人工智能</span>
+                            <span class="course-tag">操作系统设计与构建</span>
+                            <span class="course-tag">计算机与网络安全</span>
+                            <span class="course-tag">博弈论</span>
+                            <span class="course-tag">编程语言概念</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历 - 添加科技风背景 -->
+    <section id="experience" class="experience tech-section">
+        <div class="section-tech-background">
+            <!-- 现代网格背景 -->
+            <div class="section-grid-overlay"></div>
+
+            <!-- 浮动几何形状 -->
+            <div class="section-floating-shape section-shape-1"></div>
+            <div class="section-floating-shape section-shape-2"></div>
+            <div class="section-floating-shape section-shape-3"></div>
+
+            <!-- 数字雨效果 -->
+            <div class="section-data-stream section-stream-1"></div>
+            <div class="section-data-stream section-stream-2"></div>
+            <div class="section-data-stream section-stream-3"></div>
+            <div class="section-data-stream section-stream-4"></div>
+
+            <!-- 技术节点 -->
+            <div class="section-tech-node section-node-1"></div>
+            <div class="section-tech-node section-node-2"></div>
+            <div class="section-tech-node section-node-3"></div>
+            <div class="section-tech-node section-node-4"></div>
+
+            <!-- 连接线 -->
+            <div class="section-connector section-connector-1"></div>
+            <div class="section-connector section-connector-2"></div>
+            <div class="section-connector section-connector-3"></div>
+
+            <!-- 微妙的粒子效果 -->
+            <div class="section-particles"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>实习经历</h2>
+                <p>我的专业工作经验</p>
+            </div>
+            <div class="experience-cards">
+                <div class="experience-card">
+                    <span class="experience-date">2024年12月 - 至今</span>
+                    <h3>iOS开发工程师</h3>
+                    <div class="company">Feurther Technologies LLC - Fitopia（基于Swift的健身应用）</div>
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                        <li style="margin-bottom: 10px;">•
+                            主导应用的欢迎界面开发，设计动态布局适配多设备屏幕尺寸，优化视觉层级与用户引导流程，确保在不同iOS设备上提供一致良好的用户体验</li>
+                        <li style="margin-bottom: 10px;">•
+                            重构个人主页与目标模块核心代码通过分离工具类、枚举化魔法值及组件模块化，使代码符合MVC设计规范，从而优化代码结构并提高了可维护性</li>
+                        <li style="margin-bottom: 10px;">•
+                            深度参与功能原型设计与测试，优化目标设置及用户配置界面交互流程，修复界面状态更新滞后等关键缺陷，保障版本稳定性与用户体验一致性</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <span class="experience-date">2022年8月 - 2022年11月</span>
+                    <h3>人工智能图像大数据与识别实习生（远程）</h3>
+                    <div class="company">中国科学院自动化研究所</div>
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                        <li style="margin-bottom: 10px;">• 熟练掌握Neo4j，使用Cypher进行数据的管理和查询，参与了图数据库模块的开发与优化，提升了查询效率和系统的可扩展性
+                        </li>
+                        <li style="margin-bottom: 10px;">• 利用Pandas、NumPy对原始数据进行预处理，并通过数据清洗、索引流程以及搜索算法，使数据检索速度提升了23.5%
+                        </li>
+                        <li style="margin-bottom: 10px;">•
+                            参与测试图数据库的各项功能与稳定性，确保其在大规模数据处理中的可靠性；同时协助团队成员校对英文文档，确保文档的专业性与准确性</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <span class="experience-date">2022年8月 - 2022年12月</span>
+                    <h3>助教</h3>
+                    <div class="company">宾夕法尼亚州立大学</div>
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                        <li style="margin-bottom: 10px;"><strong>CMPSC 132：编程与计算 II：数据结构</strong></li>
+                        <li style="margin-bottom: 10px;">• 每周对编程实验和作业进行评分，提供详细反馈以帮助学生理解和改进编程概念，并协助制定评分标准，确保评分的一致性和客观性
+                        </li>
+                        <li style="margin-bottom: 20px;"></li>
+                        <li style="margin-bottom: 10px;"><strong>ECON 106：计量经济学统计基础</strong></li>
+                        <li style="margin-bottom: 10px;">• 负责监考和批改期末考试卷，确保考场公正有序及学生成绩真实有效，并协助教授为学生答疑解惑</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>项目经历</h2>
+                <p>我的技术项目与成果</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/project_cover/er_diagram_3x2.jpg" alt="旅游邮轮网站项目图片">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>
+                                <a href="https://github.com/XXXG00W0/cruise_website" target="_blank"
+                                    style="text-decoration: none; color: inherit;">
+                                    旅游邮轮网站开发与实现
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="currentColor" style="margin-left: 5px; vertical-align: middle;">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                    <br>
+                                </a>
+                            </h3>
+                            <button class="toggle-details" aria-label="展开详情">
+                                <span class="toggle-icon">+</span>
+                            </button>
+                        </div>
+                        <span class="project-date">2024年10月 - 2024年12月</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">后端</span>
+                            <span class="project-tag">Flask</span>
+                            <span class="project-tag">数据库</span>
+                            <span class="project-tag">网络安全</span>
+                        </div>
+                        <div class="project-details">
+                            <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                                <li style="margin-bottom: 10px;">•
+                                    <b>项目简介：</b>负责设计并实现邮轮预订管理系统的后端架构，开发了用户身份验证、行程查询、客房预订、服务包购买等核心功能，支持多角色权限管控
+                                </li>
+                                <li style="margin-bottom: 10px;">• <b>使用技术与工具：</b>采用Python +
+                                    Flask构建后端服务；通过SQLAlchemy实现与SQLite数据库的高效交互，同时有效防止SQL注入攻击</li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>优化与提升：</b>通过建立数据库索引，提高了数据查询速度；通过输入净化、密码哈希、CORS配置、会话管理和HTTPS协议，增强了系统整体安全性
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/project_cover/hpml_project_cover.jpg" alt="分布式机器学习项目图片">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>
+                                <a href="https://github.com/XXXG00W0/hpml_project" target="_blank"
+                                    style="text-decoration: none; color: inherit;">
+                                    分布式机器学习框架性能基准测试
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="currentColor" style="margin-left: 5px; vertical-align: middle;">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </a>
+                            </h3>
+                            <button class="toggle-details" aria-label="展开详情">
+                                <span class="toggle-icon">+</span>
+                            </button>
+                        </div>
+                        <span class="project-date">2024年11月 - 2024年12月</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">PyTorch</span>
+                            <span class="project-tag">机器学习</span>
+                            <span class="project-tag">分布式计算</span>
+                            <span class="project-tag">性能优化</span>
+                        </div>
+                        <div class="project-details">
+                            <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                                <li style="margin-bottom: 10px;">•
+                                    <b>项目简介：</b>基于GPT-2模型与OSCAR数据集子集，对比分布式训练框架性能差异，分析吞吐量、通信开销等指标，为大语言模型训练提供框架选型建议
+                                </li>
+                                <li style="margin-bottom: 10px;">• <b>使用技术与工具：</b>基于HuggingFace
+                                    Transformers库实现GPT-2模型权重下载与数据集子集分割，使用WandB工具实时追踪训练吞吐量、GPU显存占用及通信开销，生成可视化报告供团队分析</li>
+                                <li style="margin-bottom: 10px;">• <b>核心贡献：</b>负责基准模型与数据集选型，完成预训练模型下载与子集分割
+                                    ；搭建单GPU训练基线，量化输出吞吐量、显存使用峰值等关键指标</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/project_cover/java_project_cover.png" alt="网络聊天应用图片">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>
+                                <a href="https://github.com/Yihua-Yang-yqy/javaChatAppProject" target="_blank"
+                                    style="text-decoration: none; color: inherit;">
+                                    网络聊天应用程序
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="currentColor" style="margin-left: 5px; vertical-align: middle;">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                    <br><br>
+                                </a>
+                            </h3>
+                            <button class="toggle-details" aria-label="展开详情">
+                                <span class="toggle-icon">+</span>
+                            </button>
+                        </div>
+                        <span class="project-date">2024年4月 - 2024年5月</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">网络安全</span>
+                            <span class="project-tag">多线程</span>
+                            <span class="project-tag">GUI</span>
+                            <span class="project-tag">Socket编程</span>
+                        </div>
+                        <div class="project-details">
+                            <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                                <li style="margin-bottom: 10px;">•
+                                    <b>项目简介：</b>设计并实现了一款基于Java的网络聊天应用程序，支持多名用户通过客户端进行登录、发送消息（包括Emoji表情）、修改密码等操作，同时实现了服务器端与多个客户端的高效通信，确保了数据传输的安全性和系统的稳定性
+                                </li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>使用技术与工具：</b>项目中使用了JDBC进行数据库集成，并通过AES加密和散列加盐技术，确保了用户数据的安全存储与传输。应用程序支持发送和接收Emoji表情，通过Java
+                                    Swing构建了用户友好的图形界面，并通过套接字编程和多线程技术实现了高效的客户端-服务器通信
+                                </li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>优化与提升：</b>通过引入多线程处理，系统能够同时处理多个客户端请求，相较于单线程，响应效率提高了48.95%，显著增强了系统并发处理能力
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/project_cover/food_project_cover_full_3x2.jpg" alt="食品分类模型项目图片">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>
+                                <a href="https://github.com/Yihua-Yang-yqy/Food-Classification-Model" target="_blank"
+                                    style="text-decoration: none; color: inherit;">
+                                    食品分类模型的训练与部署
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="currentColor" style="margin-left: 5px; vertical-align: middle;">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                    <br><br>
+                                </a>
+                            </h3>
+                            <button class="toggle-details" aria-label="展开详情">
+                                <span class="toggle-icon">+</span>
+                            </button>
+                        </div>
+                        <span class="project-date">2023年11月 - 2023年12月</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">机器学习</span>
+                            <span class="project-tag">TensorFlow</span>
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">云部署</span>
+                        </div>
+                        <div class="project-details">
+                            <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                                <li style="margin-bottom: 10px;">•
+                                    <b>项目简介：</b>开发并部署了一个能高效区分11种不同食物的机器学习模型，项目核心在于精度提升与云端部署，以满足快速处理与准确分类的需求
+                                </li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>使用技术与工具：</b>采用了VGG16和MobileNetV2作为基础模型，通过TensorFlow进行全面的模型训练与调优。同时，利用Docker和Kubernetes将优化后的模型部署到云端，实现了系统的高扩展性和灵活性，从而确保了模型在实际应用中的稳定性与高效性
+                                </li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>优化与提升：</b>将模型准确率从76.22%提升到84.92%，显著优于前代模型。同时，通过优化云端部署配置，减少了12.5%的响应时间，并提升了10.5%的事务处理率，进一步提高了系统整体效率和用户体验
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/project_cover/nittanyMarket_project_cover.jpg" alt="NittanyMarket网站项目图片">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>
+                                <a href="https://github.com/Yihua-Yang-yqy/NittanyMarket" target="_blank"
+                                    style="text-decoration: none; color: inherit;">
+                                    NittanyMarket网站设计与建设
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="currentColor" style="margin-left: 5px; vertical-align: middle;">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                    <br><br>
+                                </a>
+                            </h3>
+                            <button class="toggle-details" aria-label="展开详情">
+                                <span class="toggle-icon">+</span>
+                            </button>
+                        </div>
+                        <span class="project-date">2022年3月 - 2022年5月</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">SQL</span>
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">Flask</span>
+                            <span class="project-tag">全栈开发</span>
+                        </div>
+                        <div class="project-details">
+                            <ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+                                <li style="margin-bottom: 10px;">•
+                                    <b>项目简介：</b>设计并开发了一个虚构的二手交易平台网站NittanyMarket，提供便捷、安全的在线交易环境，支持二手商品发布与交易
+                                </li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>使用技术与工具：</b>使用Python、SQL、HTML以及Flask框架进行全栈开发。通过需求分析实现登录、产品发布、搜索、购物车、买卖记录查询等功能
+                                </li>
+                                <li style="margin-bottom: 10px;">•
+                                    <b>优化与提升：</b>通过优化数据库结构，将数据查询效率提升了16.8%，并减少了31.3%的存储冗余。此外，实施了防止SQL注入攻击的措施，并优化了用户数据的加密方式，显著增强了网站的整体性能和用户数据的安全保障
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业技能 - 添加科技风背景 -->
+    <section id="skills" class="skills tech-section">
+        <div class="section-tech-background">
+            <!-- 现代网格背景 -->
+            <div class="section-grid-overlay"></div>
+
+            <!-- 浮动几何形状 -->
+            <div class="section-floating-shape section-shape-1"></div>
+            <div class="section-floating-shape section-shape-2"></div>
+            <div class="section-floating-shape section-shape-3"></div>
+
+            <!-- 数字雨效果 -->
+            <div class="section-data-stream section-stream-1"></div>
+            <div class="section-data-stream section-stream-2"></div>
+            <div class="section-data-stream section-stream-3"></div>
+            <div class="section-data-stream section-stream-4"></div>
+
+            <!-- 技术节点 -->
+            <div class="section-tech-node section-node-1"></div>
+            <div class="section-tech-node section-node-2"></div>
+            <div class="section-tech-node section-node-3"></div>
+            <div class="section-tech-node section-node-4"></div>
+
+            <!-- 连接线 -->
+            <div class="section-connector section-connector-1"></div>
+            <div class="section-connector section-connector-2"></div>
+            <div class="section-connector section-connector-3"></div>
+
+            <!-- 微妙的粒子效果 -->
+            <div class="section-particles"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>专业技能</h2>
+                <p>我的技术专长与能力</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">💻</div>
+                        <h3>编程语言</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Swift</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🧠</div>
+                        <h3>机器学习</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">PyTorch</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>数据库管理</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Cypher</span>
+                        <span class="skill-tag">Neo4j</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">📊</div>
+                        <h3>数据处理</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚙️</div>
+                        <h3>计算机架构</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">RISC-V</span>
+                        <span class="skill-tag">MIPS</span>
+                        <span class="skill-tag">Verilog</span>
+                        <span class="skill-tag">ARM</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🌐</div>
+                        <h3>Web开发</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏经历 -->
+    <section id="interests" class="interests">
+        <div class="container">
+            <div class="section-title">
+                <h2>游戏经历</h2>
+                <p>我的游戏时间与成就</p>
+            </div>
+
+            <!-- Steam平台游戏 -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-icon steam-icon">
+                        <svg viewBox="0 0 24 24" width="36" height="36">
+                            <path
+                                d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z" />
+                        </svg>
+                    </div>
+                    <h3>Steam游戏</h3>
+                </div>
+
+                <div class="games-grid">
+                    <!-- 上古卷轴OL -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">📜</div>
+                            <h4>上古卷轴OL</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">905.6小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 模拟人生4 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">🏠</div>
+                            <h4>模拟人生4</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">700.2小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 战舰世界 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">⚓</div>
+                            <h4>战舰世界</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">506小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 赛博朋克2077 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">🌆</div>
+                            <h4>赛博朋克2077</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">364.2小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 怪物猎人世界 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">🐉</div>
+                            <h4>怪物猎人：世界</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">208.7小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 星空 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">🚀</div>
+                            <h4>星空</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">184小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 都市：天际线2 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">🏙️</div>
+                            <h4>都市：天际线2</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">174.3小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 辐射4 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">☢️</div>
+                            <h4>辐射4</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">126.2小时</div>
+                        </div>
+                    </div>
+
+                    <!-- 天国：拯救 -->
+                    <div class="game-card steam-card">
+                        <div class="game-header">
+                            <div class="game-icon">⚔️</div>
+                            <h4>天国：拯救</h4>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-hours">107.7小时</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 总游戏时间统计 -->
+                <div class="platform-summary">
+                    <div class="total-time">
+                        <span class="total-label"><b>总游戏时间:</b></span>
+                        <span class="total-value">3,277小时</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 米哈游平台游戏 -->
+            <div class="platform-section">
+                <div class="platform-header mihoyo-header">
+                    <div class="platform-icon mihoyo-icon">
+                        <img src="images/game_logo/mhy.png" alt="miHoYo Logo"
+                            style="width: 50px; height: 50px; object-fit: contain;">
+                    </div>
+                    <h3>miHoYo游戏</h3>
+                </div>
+                <div class="games-grid">
+                    <!-- 原神 -->
+                    <div class="game-card mihoyo-card">
+                        <div class="game-header">
+                            <div class="game-icon">
+                                <img src="images/game_logo/genshin.png" alt="原神图标"
+                                    style="width: 40px; height: 40px; object-fit: cover;">
+                            </div>
+                            <h4
+                                style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                                原神 <span font-weight: 600;">Lv.60</span>
+                            </h4>
+                        </div>
+                        <div class="game-stats mihoyo-stats">
+                            <div class="mihoyo-stat-item">
+                                <span class="mihoyo-stat-label">活跃天数</span>
+                                <span class="mihoyo-stat-value" id="genshin-days">715天</span>
+                            </div>
+                            <div class="mihoyo-stat-item">
+                                <span class="mihoyo-stat-label">达成成就</span>
+                                <span class="mihoyo-stat-value">902</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 崩坏：星穹铁道 -->
+                    <div class="game-card mihoyo-card">
+                        <div class="game-header">
+                            <div class="game-icon">
+                                <img src="images/game_logo/hsr.png" alt="崩坏：星穹铁道图标"
+                                    style="width: 40px; height: 40px; object-fit: cover;">
+                            </div>
+                            <h4
+                                style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                                崩坏：星穹铁道 <span font-weight: 600;">Lv.70</span>
+                            </h4>
+                        </div>
+                        <div class="game-stats mihoyo-stats">
+                            <div class="mihoyo-stat-item">
+                                <span class="mihoyo-stat-label">活跃天数</span>
+                                <span class="mihoyo-stat-value" id="starrail-days">437天</span>
+                            </div>
+                            <div class="mihoyo-stat-item">
+                                <span class="mihoyo-stat-label">达成成就</span>
+                                <span class="mihoyo-stat-value">660</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 绝区零 -->
+                    <div class="game-card mihoyo-card">
+                        <div class="game-header">
+                            <div class="game-icon">
+                                <img src="images/game_logo/zzz.jpg" alt="绝区零图标"
+                                    style="width: 40px; height: 40px; object-fit: cover;">
+                            </div>
+                            <h4
+                                style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                                绝区零 <span font-weight: 600;">Lv.59</span>
+                            </h4>
+                        </div>
+                        <div class="game-stats mihoyo-stats">
+                            <div class="mihoyo-stat-item">
+                                <span class="mihoyo-stat-label">活跃天数</span>
+                                <span class="mihoyo-stat-value" id="zenless-days">269天</span>
+                            </div>
+                            <div class="mihoyo-stat-item">
+                                <span class="mihoyo-stat-label">达成成就</span>
+                                <span class="mihoyo-stat-value">216</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 - 添加科技风背景 -->
+    <section id="contact" class="contact tech-section">
+        <div class="section-tech-background">
+            <!-- 现代网格背景 -->
+            <div class="section-grid-overlay"></div>
+
+            <!-- 浮动几何形状 -->
+            <div class="section-floating-shape section-shape-1"></div>
+            <div class="section-floating-shape section-shape-2"></div>
+            <div class="section-floating-shape section-shape-3"></div>
+
+            <!-- 数字雨效果 -->
+            <div class="section-data-stream section-stream-1"></div>
+            <div class="section-data-stream section-stream-2"></div>
+            <div class="section-data-stream section-stream-3"></div>
+            <div class="section-data-stream section-stream-4"></div>
+
+            <!-- 技术节点 -->
+            <div class="section-tech-node section-node-1"></div>
+            <div class="section-tech-node section-node-2"></div>
+            <div class="section-tech-node section-node-3"></div>
+            <div class="section-tech-node section-node-4"></div>
+
+            <!-- 连接线 -->
+            <div class="section-connector section-connector-1"></div>
+            <div class="section-connector section-connector-2"></div>
+            <div class="section-connector section-connector-3"></div>
+
+            <!-- 微妙的粒子效果 -->
+            <div class="section-particles"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>联系方式</h2>
+                <p>如果你有任何问题或合作意向，请随时联系我</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>邮箱</h3>
+                    <p><a href="mailto:zaqx5swcde@163.com">zaqx5swcde@163.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>电话</h3>
+                    <p><a href="tel:18587870656">18587870656</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p><a href="https://github.com/Yihua-Yang-yqy" target="_blank">github.com/Yihua-Yang-yqy</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://linkedin.com/in/yihuaYang" target="_blank">linkedin.com/in/yihuaYang</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#home" id="back-to-top" class="back-to-top">
+        <i class="arrow-up">↑</i>
+    </a>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://github.com/Yihua-Yang-yqy" target="_blank" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/yihuaYang" target="_blank" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:zaqx5swcde@163.com" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
+                        </svg>
+                    </a>
+
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 杨易骅. 保留所有权利。</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="personal-website-js.js"></script>
+</body>
+
+</html>
