@@ -194,7 +194,7 @@ const calculateActiveDays = () => {
     // 绝区零开始日期 (根据267天倒推)
     const zenlessStartDate = new Date(2025, 2, 28);
     zenlessStartDate.setDate(zenlessStartDate.getDate() - 267);
-    const zenlessDays = Math.floor((currentDate - zenlessStartDate) / (1000 * 60 * 60 * 24));
+    const zenlessDays = Math.floor((currentDate - zenlessStartDate) / (1000 * 60 * 60 * 24))-1;
     const zenlessElement = document.getElementById('zenless-days');
     if (zenlessElement) {
         zenlessElement.textContent = zenlessDays + '天';
